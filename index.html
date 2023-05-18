@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taxi Booking Systeem</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="./intlTelInput.min.css" />
+    <script src="./intlTelInput.min.js"></script>
+  </head>
+  <body>
+    <div class="container show-animation">
+      <form id="step1">
+        <div class="step-indicator">
+          <div class="step completed">1</div>
+          <div class="step current">2</div>
+          <div class="step">3</div>
+        </div>
+
+        <span class="use-location">
+          <i class="fas fa-map-marker-alt"></i> Use my location
+        </span>
+
+        <div class="input-row">
+          <input type="text" id="pickup" placeholder="Pickup Location" />
+        </div>
+
+        <div class="flight-container input-row">
+          <input type="text" id="flight-number" placeholder="Flight Number" />
+        </div>
+
+        <div class="input-row">
+          <input type="text" id="dropoff" placeholder="Drop Location" />
+        </div>
+
+        <div class="input-row">
+          <select name="seats" id="seats">
+            <option value="" disabled selected>Select seats</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+        </div>
+
+        <div class="input-row ophaaltijd">
+          <input type="text" id="date" class="date-picker" />
+          <input type="text" id="time" class="time-picker" />
+        </div>
+
+        <input type="checkbox" id="retour" />
+        <label for="retour">Retour</label>
+
+        <div class="input-row">
+          <input type="text" id="return-date" class="date-picker" disabled />
+          <input type="text" id="return-time" class="time-picker" disabled />
+        </div>
+
+        <div class="input-row">
+          <input type="text" id="name" placeholder="Name" />
+          <input type="email" id="email" placeholder="Email" />
+        </div>
+
+        <div class="input-row">
+          <select name="whatsapp" id="cars">
+            <option value="">Payment in Taxi</option>
+            <option value="">Online Payment</option>
+          </select>
+        </div>
+
+        <div class="input-row">
+          <input type="tel" id="phone" placeholder="Phone number" />
+        </div>
+
+        <div class="spacing">
+          <div class="distance-block show-animation">
+            <i class="distance-icon fas fa-road"></i>
+            <span class="distance-text" id="distance">-</span>
+          </div>
+
+          <div class="duration-block show-animation">
+            <i class="duration-icon far fa-clock"></i>
+            <span class="duration-text" id="duration">-</span>
+          </div>
+        </div>
+        <button type="button" onclick="nextStep()">Select Vehicle</button>
+      </form>
+
+      <form id="step2" class="hidden">
+        <h2>Stap 2: Kies een type taxi</h2>
+        <div class="car-types">
+          <div class="car-type">
+            <img
+              src="https://niyahcreations.nl/wp-content/uploads/2023/05/Economy.png"
+              alt="Economy Car"
+            />
+            <span>Economy</span>
+            <span class="price" id="economy-price"></span>
+            <button class="select-button" onclick="selectCarType('Economy')">
+              Select
+            </button>
+          </div>
+          <div class="car-type">
+            <img
+              src="https://niyahcreations.nl/wp-content/uploads/2023/05/Luxury.png"
+              alt="Luxury Car"
+            />
+            <span>Luxury</span>
+            <span class="price" id="luxury-price"></span>
+            <button class="select-button" onclick="selectCarType('Luxury')">
+              Select
+            </button>
+          </div>
+          <div class="car-type">
+            <img
+              src="https://niyahcreations.nl/wp-content/uploads/2023/05/Van.png"
+              alt="Van Car"
+            />
+            <span>Van</span>
+            <span class="price" id="van-price"></span>
+            <button class="select-button" onclick="selectCarType('Van')">
+              Select
+            </button>
+          </div>
+        </div>
+
+        <p id="price" class="hidden">Prijs:</p>
+        <button type="button" onclick="bookTaxi()">Taxi boeken</button>
+      </form>
+
+      <div id="success" class="hidden">
+        <p>De taxi is succesvol geboekt!</p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=places"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
